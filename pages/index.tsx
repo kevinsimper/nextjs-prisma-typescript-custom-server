@@ -1,6 +1,8 @@
-import Link from 'next/link'
+import Link from "next/link";
+import { logger } from "../services/logger";
 
 export default function Home() {
+  logger("index");
   return (
     <ul>
       <li>
@@ -14,5 +16,5 @@ export default function Home() {
         </Link>
       </li>
     </ul>
-  )
+  );
 }

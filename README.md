@@ -1,22 +1,47 @@
-# Custom server with TypeScript + Nodemon example
+# Advance example of Next.js, Prisma, TypeScript and shared code
 
-The example shows how you can use [TypeScript](https://typescriptlang.com) on both the server and the client while using [Nodemon](https://nodemon.io/) to live reload the server code without affecting the Next.js universal code.
+This repo shows Next.js combined with Prisma in TypeScript.
+It shows Prisma both used in Next.js in getServerSideProps and in node.js http
+server. Both made in TypeScript sharing all types.
 
-Server entry point is `server/index.ts` in development and `dist/index.js` in production.
-The second directory should be added to `.gitignore`.
+Prisma is only available on the backend node.js environment. This means that
+Next.js has to treeshake the library out.
 
-## Deploy your own
+The node.js server shares typescript config so that the code in server can also
+resolve the `services` folder when using your code editor.
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/custom-server-typescript)
+This example is more advance than [next.js examples custom-server-typescript](https://github.com/vercel/next.js/tree/canary/examples/custom-server-typescript)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/custom-server-typescript)
+## Development
 
-## How to use
+Start the sqlite database
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+```
+npx prisma migrate dev
+```
 
-```bash
-npx create-next-app --example custom-server-typescript custom-server-typescript-app
-# or
-yarn create next-app --example custom-server-typescript custom-server-typescript-app
+Run one window with
+
+```
+npm run watch
+```
+
+and another terminal with
+
+```
+npm run dev
+```
+
+## Production
+
+First run
+
+```
+npm run build
+```
+
+and then start
+
+```
+npm start
 ```
